@@ -113,7 +113,7 @@ function Hero() {
             </ul>
             <div
               // src={{ backgroundImage: `url(${HeroImage})` }}
-              className="h-[100%] back object-contain"
+              className="h-[100%] back bg-[url('/backfill.png')] object-contain"
             >
               <div className="text-white text-center py-56">
                 <h1 className="text-[44px] font-semibold">

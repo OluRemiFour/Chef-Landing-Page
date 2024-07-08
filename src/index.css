@@ -7,7 +7,7 @@ body {
 }
 
 .back {
-  background: url(./backfill.png);
+  /* background: url(./backfill.png); */
   background-repeat: no-repeat;
   object-fit: contain;
   background-size: cover;
