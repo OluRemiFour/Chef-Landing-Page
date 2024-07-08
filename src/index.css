@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.back {
+  background: url(./backfill.png);
+  background-repeat: no-repeat;
+  object-fit: contain;
+  background-size: cover;
+  background-position: center;
+  /* background-attachment: fixed; */
+}
