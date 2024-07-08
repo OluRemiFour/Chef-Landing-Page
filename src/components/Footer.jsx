@@ -2,7 +2,7 @@ function Footer() {
   return (
     <>
       <div className="md:hidden">
-        <div className="bg-[#0A0A0A] py-10 px-12">
+        <div className="bg-[#0A0A0A] py-6 px-12">
           <div className="flex py-6 items-center justify-between">
             <div>
               <img src="/LOGO.png" alt="logo" />
@@ -11,7 +11,7 @@ function Footer() {
               Sign up
             </button>
           </div>
-          <ul className="grid grid-cols-3 py-8 gap-6 text-white">
+          <ul className="grid grid-cols-3 py-6 gap-6 text-white">
             <li>Cookware</li>
             <li>Kitchen </li>
             <li>Bakeware</li>
