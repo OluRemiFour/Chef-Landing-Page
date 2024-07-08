@@ -40,6 +40,7 @@ function Footer() {
               <img src="arrow.png" alt="" />
             </div>
           </div>
+          <p className="text-slate-500">&#169; Oluremi | 2024</p>
         </div>
       </div>
 
@@ -80,7 +81,7 @@ function Footer() {
               <p className="text-white">41 plot 5, Port-Harcourt, Nigeria </p>
             </div>
           </div>
-          <p className="text-slate-500 md:px-16 pt-14">@Oluremi | 2024</p>
+          <p className="text-slate-500 md:px-16 pt-14">&#169; Oluremi | 2024</p>
         </div>
       </div>
     </>
