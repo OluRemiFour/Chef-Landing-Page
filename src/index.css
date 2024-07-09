@@ -5,6 +5,12 @@
 body {
   font-family: Georgia, "Times New Roman", Times, serif;
 }
+h3 {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
 
 .back {
   /* background: url(./backfill.png); */
@@ -13,4 +19,9 @@ body {
   background-size: cover;
   background-position: center;
   /* background-attachment: fixed; */
+}
+
+.active{
+  border-bottom: 3px solid white;
+padding-bottom: 4px;
 }

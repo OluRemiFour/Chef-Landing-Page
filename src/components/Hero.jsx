@@ -2,7 +2,7 @@ import { CiSearch } from "react-icons/ci";
 import { FaRegUser } from "react-icons/fa";
 import { MdFavoriteBorder } from "react-icons/md";
 import { BsCart2 } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Cookware from "../features/Cookware";
 import Group from "../../public/Group.png";
 // import HeroImage from "../../public/heroback.png";
@@ -14,22 +14,24 @@ function Hero() {
       <div className="md:hidden">
         <div className="bg-[#0A0A0A]">
           <div className="bg-[#0A0A0A] pt-10 pb-5 px-8 flex items-center justify-between">
-            <div className="flex gap-4">
+            <div className="flex gap-4 items-center">
               <div>
                 <img src="/Icons.png" alt="burger" />
               </div>
               <Link to="/">
                 <div>
-                  <img src="/LOGO.png" alt="logo" />
+                  <h1 className="font-extrabold text-white text-4xl">CHEF</h1>
+
+                  {/* <img src="/LOGO.png" alt="logo" /> */}
                 </div>
               </Link>
             </div>
             <div className="flex text-white gap-4 text-[20px]">
               <FaRegUser />
               <MdFavoriteBorder />
-              <Link to="cart">
-                <BsCart2 />
-                <p className="bg-red-600 rounded-full px-1 text-center text-sm text-white">
+              <Link to="/cart">
+                <BsCart2 className="relative" />
+                <p className="bg-red-600 absolute mt-[-1.6rem] ml-3 rounded-full px-[6px] text-center text-sm text-white">
                   2
                 </p>
               </Link>
@@ -40,7 +42,7 @@ function Hero() {
             <input
               type="text"
               placeholder="Search products"
-              className="bg-[#292929] py-4 px-16 outline-none w-[23rem] text-lg rounded-md "
+              className="bg-[#292929] py-4 px-16 outline-none w-[23rem] text-lg rounded-md text-white"
             />
           </div>
         </div>
@@ -64,14 +66,16 @@ function Hero() {
           <div className="flex">
             <div className="flex items-center">
               <div>
-                <img src="/LOGO.png" />
+                <h1 className="font-extrabold text-white text-5xl">CHEF</h1>
+
+                {/* <img src="/LOGO.png" /> */}
               </div>
               <div className="flex space-x-7">
                 <CiSearch className="absolute size-6 text-gray-400 my-3 mx-12" />
                 <input
                   type="text"
                   placeholder="Search products"
-                  className="bg-[#292929] py-[14px] px-14 outline-none md:w-[20rem] lg:w-[18rem] text-[14px] rounded-md "
+                  className="bg-[#292929] py-[14px] px-14 outline-none md:w-[20rem] lg:w-[18rem] text-[14px] text-white rounded-md "
                 />
               </div>
             </div>
@@ -80,9 +84,9 @@ function Hero() {
           <div className="flex text-white gap-8 text-[20px]">
             <FaRegUser />
             <MdFavoriteBorder />
-            <Link to="cart">
-              <BsCart2 />
-              <p className="bg-red-600 rounded-full px-1 text-sm text-center text-white">
+            <Link to="/cart">
+              <BsCart2 className="" />
+              <p className="bg-red-600 hover:bg-[#0a0a0a] duration-500 transition-all absolute mt-[-1.6rem] ml-3 rounded-full px-[6px] text-center text-sm text-white">
                 2
               </p>
             </Link>
@@ -93,22 +97,22 @@ function Hero() {
           <div>
             <ul className="bg-[#DB6A18] flex justify-center items-center gap-14 py-4 text-white text-[16px]">
               <li>
-                <Link>Cookware</Link>
+                <NavLink to="/">Cookware</NavLink>
               </li>
+              {/* <li>
+                <NavLink to="kitchen">Kitchen appliances</NavLink>
+              </li> */}
+              {/* <li>
+                <NavLink to="bakeware">Bakeware</NavLink>
+              </li> */}
               <li>
-                <Link>Kitchen appliances</Link>
+                <NavLink to="/knives">Knives</NavLink>
               </li>
+              {/* <li>
+                <NavLink to="cutlery">Cutlery</NavLink>
+              </li> */}
               <li>
-                <Link>Bakeware</Link>
-              </li>
-              <li>
-                <Link>Knives</Link>
-              </li>
-              <li>
-                <Link>Cutlery</Link>
-              </li>
-              <li>
-                <Link>Contact us</Link>
+                <NavLink to="/contact">Contact us</NavLink>
               </li>
             </ul>
             <div

@@ -1,23 +1,50 @@
+import { Link } from "react-router-dom";
+
+const scrollButtonStyle = {
+  bottom: "20px",
+  right: "20px",
+  padding: "10px 20px",
+  fontSize: "16px",
+  border: "none",
+  borderRadius: "5px",
+  cursor: "pointer",
+};
 function Footer() {
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }
   return (
     <>
       <div className="md:hidden">
         <div className="bg-[#0A0A0A] py-6 px-12">
           <div className="flex py-6 items-center justify-between">
             <div>
-              <img src="/LOGO.png" alt="logo" />
+              <Link to="/">
+                <h1 className="font-extrabold text-white text-4xl">CHEF</h1>
+              </Link>
+              {/* <img src="/LOGO.png" alt="logo" /> */}
             </div>
             <button className="bg-[#DB6A18] px-4 py-2 rounded-md text-white">
               Sign up
             </button>
           </div>
           <ul className="grid grid-cols-3 py-6 gap-6 text-white">
-            <li>Cookware</li>
-            <li>Kitchen </li>
-            <li>Bakeware</li>
-            <li>Knives</li>
-            <li>Cutlery</li>
-            <li>Contact us</li>
+            <Link to="/">
+              <li>Cookware</li>
+            </Link>
+
+            <Link to="/knives">
+              {/* <li>Kitchen </li> */}
+              <li>Knives</li>
+            </Link>
+            {/* <li>Bakeware</li> */}
+            {/* <li>Cutlery</li> */}
+            <Link to="/contact">
+              <li>Contact us</li>
+            </Link>
           </ul>
 
           <div className="py-8 flex justify-between">
@@ -37,7 +64,12 @@ function Footer() {
             </div>
 
             <div>
-              <img src="arrow.png" alt="" />
+              <img
+                onClick={scrollToTop}
+                style={scrollButtonStyle}
+                src="arrow.png"
+                alt=""
+              />
             </div>
           </div>
           <p className="text-slate-500">&#169; Oluremi | 2024</p>
@@ -49,15 +81,22 @@ function Footer() {
         <div className="bg-[#0A0A0A] py-10 lg:px-1 px-6">
           <div className="flex items-center justify-between py-8 md:px-14">
             <div>
-              <img src="/LOGO.png" alt="logo" />
+              <h1 className="font-extrabold text-white text-5xl">CHEF</h1>
+              {/* <img src="/LOGO.png" alt="logo" /> */}
             </div>
-            <ul className="flex text-center space-x-2 items-center lg:justify-center lg:gap-16 text-white">
-              <li>Kitchen appliances</li>
-              <li>Cookware</li>
-              <li>Bakeware</li>
-              <li>Knives</li>
-              <li>Cutlery</li>
-              <li>Contact us</li>
+            <ul className="flex text-center space-x-4 items-center lg:justify-center lg:gap-16 text-white">
+              {/* <li>Kitchen appliances</li> */}
+              <Link to="/">
+                <li>Cookware</li>
+              </Link>
+              <Link to="/knives">
+                <li>Knives</li>
+              </Link>
+
+              <Link to="/contact">
+                <li>Contact us</li>
+              </Link>
+              {/* <li>Cutlery</li> */}
             </ul>
             <button className="bg-[#DB6A18] p-2 rounded-md text-white">
               Sign up
@@ -66,7 +105,9 @@ function Footer() {
 
           <div className="pt-36 flex items-center md:px-16 justify-between">
             <div>
-              <img src="arrow.png" alt="" />
+              <Link onClick={scrollToTop} style={scrollButtonStyle}>
+                <img src="arrow.png" alt="" />
+              </Link>
             </div>
             <div>
               <p className="text-slate-500 py-1">Contact</p>

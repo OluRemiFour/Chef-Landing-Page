@@ -15,7 +15,7 @@ function Carts() {
             <div className="flex items-center">
               <div>
                 <Link to="/">
-                  <img src="/LOGO.png" />
+                  <h1 className="font-extrabold text-white text-4xl">CHEF</h1>
                 </Link>
               </div>
               <div className="flex space-x-7">
@@ -34,7 +34,7 @@ function Carts() {
             <MdFavoriteBorder />
             <Link>
               <BsCart2 />
-              <p className="bg-red-600 rounded-full text-center px-1 text-sm text-white">
+              <p className="bg-red-600 absolute mt-[-1.6rem] ml-3 rounded-full px-[6px] text-center text-sm text-white">
                 2
               </p>
             </Link>
@@ -47,20 +47,20 @@ function Carts() {
               <li>
                 <Link to="/">Cookware</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link>Kitchen appliances</Link>
-              </li>
-              <li>
+              </li> */}
+              {/* <li>
                 <Link>Bakeware</Link>
-              </li>
+              </li> */}
               <li>
-                <Link>Knives</Link>
+                <Link to="/knives">Knives</Link>
               </li>
-              <li>
+              {/* <li>
                 <Link>Cutlery</Link>
-              </li>
+              </li> */}
               <li>
-                <Link>Contact us</Link>
+                <Link to="/contact">Contact us</Link>
               </li>
             </ul>
           </div>
@@ -70,14 +70,14 @@ function Carts() {
       <div className="md:hidden">
         <div className="bg-[#0A0A0A]">
           <div className="bg-[#0A0A0A] pt-10 pb-10 px-8 flex items-center justify-between">
-            <div className="flex gap-4">
+            <div className="flex gap-4 items-center">
               <div>
                 <img src="/Icons.png" alt="burger" />
               </div>
 
               <Link to="/">
                 <div>
-                  <img src="/LOGO.png" alt="logo" />
+                  <h1 className="font-extrabold text-white text-4xl">CHEF</h1>
                 </div>
               </Link>
             </div>

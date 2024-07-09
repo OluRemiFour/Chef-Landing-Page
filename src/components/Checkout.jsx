@@ -11,7 +11,8 @@ function Checkout() {
           <div className="bg-[#0A0A0A] py-10 px-6">
             <Link to="/">
               <div className="md:mx-16">
-                <img src="/LOGO.png" alt="logo" />
+                {/* <img src="/LOGO.png" alt="logo" /> */}
+                <h1 className="font-extrabold text-white text-4xl">CHEF</h1>
               </div>
             </Link>
           </div>
@@ -20,7 +21,7 @@ function Checkout() {
 
       {/* checkout */}
 
-      <div className="md:m-10 py-12">
+      <div className="md:m-10 py-10">
         <h1 className="text-3xl font-semibold py-4 px-6 md:px-16">Checkout</h1>
         <div className="md:mx-16 mx-6 grid md:grid-cols-2 grid-cols-1 gap-8 justify-between">
           <div>
@@ -350,19 +351,25 @@ function Checkout() {
         <div className="bg-[#0A0A0A] py-10 px-12">
           <div className="flex py-6 items-center justify-between">
             <div>
-              <img src="/LOGO.png" alt="logo" />
+              <h1 className="font-extrabold text-white text-4xl">CHEF</h1>
             </div>
             <button className="bg-[#DB6A18] px-4 py-2 rounded-md text-white">
               Sign up
             </button>
           </div>
           <ul className="grid grid-cols-3 py-8 gap-6 text-white">
-            <li>Cookware</li>
-            <li>Kitchen </li>
-            <li>Bakeware</li>
-            <li>Knives</li>
-            <li>Cutlery</li>
-            <li>Contact us</li>
+            <Link to="/">
+              <li>Cookware</li>
+            </Link>
+            {/* <li>Kitchen </li> */}
+            {/* <li>Bakeware</li> */}
+            <Link to="/knives">
+              <li>Knives</li>
+            </Link>
+            {/* <li>Cutlery</li> */}
+            <Link to="/contact">
+              <li>Contact us</li>
+            </Link>
           </ul>
 
           <div className="py-8 flex justify-between">
@@ -393,15 +400,24 @@ function Checkout() {
         <div className="bg-[#0A0A0A] py-10 lg:px-1 px-6">
           <div className="flex items-center justify-between py-8 md:px-14">
             <div>
-              <img src="/LOGO.png" alt="logo" />
+              <Link to="/">
+                <h1 className="font-extrabold text-white text-4xl">CHEF</h1>
+              </Link>
             </div>
             <ul className="flex text-center space-x-2 items-center lg:justify-center lg:gap-16 text-white">
-              <li>Kitchen appliances</li>
-              <li>Cookware</li>
-              <li>Bakeware</li>
-              <li>Knives</li>
-              <li>Cutlery</li>
-              <li>Contact us</li>
+              {/* <li>Kitchen appliances</li> */}
+              <Link to="/">
+                <li>Cookware</li>
+              </Link>
+              {/* <li>Bakeware</li> */}
+              <Link to="knives">
+                <li>Knives</li>
+              </Link>
+
+              {/* <li>Cutlery</li> */}
+              <Link to="contact">
+                <li>Contact us</li>
+              </Link>
             </ul>
             <button className="bg-[#DB6A18] p-2 rounded-md text-white">
               Sign up
