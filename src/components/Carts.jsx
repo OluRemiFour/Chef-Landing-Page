@@ -97,7 +97,7 @@ function Carts() {
             <input
               type="text"
               placeholder="Search products"
-              className="bg-[#292929] py-4 px-16 outline-none w-[23rem] text-lg rounded-md "
+              className="bg-[#292929] active:text-white py-4 px-16 outline-none w-[23rem] text-lg rounded-md "
             />
           </div>
         </div>
