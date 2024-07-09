@@ -103,14 +103,14 @@ function Carts() {
         </div>
       </div>
 
-      <div className="md:py-16 mx-auto md:px-6 flex flex-col py-8 md:mx-auto">
+      <div className="md:py-16 mx-auto gap-[40px] md:px-6 flex flex-col py-8 md:mx-auto">
         <div className="md:flex px-10 space-y-2 font-semibold items-center justify-between">
           <h1 className="text-3xl">Cart Items</h1>
           <button className="">Back to shopping &rarr;</button>
         </div>
 
-        <div className="md:grid  lg:gap-10 lg:grid-cols-2 space-y-8 lg:space-y-0 py-10 items-center mx-auto flex flex-col justify-between">
-          <div className="justify-between md:space-y-0 lg:space-y-4 space-y-4 gap-8 md:flex lg:block">
+        <div className="md:grid lg:gap-[48px] lg:grid-cols-2 space-y-8 lg:space-y-0 py-10 items-center mx-auto flex flex-col justify-between">
+          <div className="justify-between md:space-y-0 lg:space-y-4 space-y-4 gap-[48px] md:flex lg:block">
             <div className="lg:flex p-4 gap-3 w-fit border h-fit">
               <img src="/img.png" alt="img" className="w-full lg:w-fit" />
               <div className="space-y-1">
@@ -213,7 +213,7 @@ function Carts() {
               <p>Shipping</p>
               <p>N0, 000</p>
             </div>
-            <div className="flex py-4 font-semibold border-t border-b border-black justify-between">
+            <div className="flex py-4 font-semibold border-t border-b border-[#dffeff] justify-between">
               <p>Total</p>
               <p>N180, 000</p>
             </div>
@@ -222,12 +222,14 @@ function Carts() {
               <input
                 type="text"
                 placeholder="Promo code"
-                className="w-full border px-4 border-black outline-none"
+                className="w-full border px-4 border-[#dffeff] outline-none"
               />
-              <button className="py-4 px-6 bg-black text-white">Apply</button>
+              <button className="py-4 px-10 bg-[#DB6A18] text-white">
+                Apply
+              </button>
             </div>
             <Link to="/checkout">
-              <button className="bg-black p-4 text-white w-full">
+              <button className="bg-black p-4 my-4 rounded-md text-white w-full">
                 Checkout
               </button>
             </Link>

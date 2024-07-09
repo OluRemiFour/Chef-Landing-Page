@@ -6,6 +6,7 @@ import Checkout from "./components/Checkout";
 import Contact from "./features/Contact";
 import Knives from "./features/Knives";
 import React from "react";
+// import NotFound from "./features/NotFound";
 // import Checkout from "./components/Checkout";
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
         <Route path="checkout" element={<Checkout />} />
         <Route path="knives" element={<Knives />} />
         <Route path="contact" element={<Contact />} />
+        {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
     </BrowserRouter>
   );

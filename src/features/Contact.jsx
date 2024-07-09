@@ -117,9 +117,9 @@ function Contact() {
         </div>
       </div>
       <div className="m-10">
-        <h1 className="text-[32px] font-semibold mx-6 py-8">Contact Us</h1>
+        <h1 className="text-[32px] font-semibold mx-6 pt-8">Contact Us</h1>
 
-        <div className="lg:flex mx-auto w-fit gap-6">
+        <div className="lg:flex mx-auto w-fit gap-[48px]">
           <div className="block space-y-8 md:p-8">
             <div className="space-y-1">
               <div className="bg-[#DB6A18] mb-4 opacity-[88%] flex justify-center items-center rounded-full w-11 h-11">
@@ -216,7 +216,7 @@ function Contact() {
               ></textarea>
             </div>
 
-            <button className="bg-black rounded-md p-4 my-6 text-white w-full">
+            <button className="bg-black rounded-md p-4 my-8 text-white w-full">
               Submit{" "}
             </button>
           </div>

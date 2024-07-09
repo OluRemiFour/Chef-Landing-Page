@@ -66,7 +66,7 @@ function Hero() {
           <div className="flex">
             <div className="flex items-center">
               <div>
-                <h1 className="font-extrabold text-white text-5xl">CHEF</h1>
+                <h1 className="font-extrabold text-white text-4xl">CHEF</h1>
 
                 {/* <img src="/LOGO.png" /> */}
               </div>

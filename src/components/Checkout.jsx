@@ -23,7 +23,7 @@ function Checkout() {
 
       <div className="md:m-10 py-10">
         <h1 className="text-3xl font-semibold py-4 px-6 md:px-16">Checkout</h1>
-        <div className="md:mx-16 mx-6 grid md:grid-cols-2 grid-cols-1 gap-8 justify-between">
+        <div className="md:mx-16 mx-6 grid md:grid-cols-2 grid-cols-1 gap-[48px] justify-between">
           <div>
             <h1 className="font-semibold py-2 text-xl">1. Delivery Details</h1>
             <div>
@@ -410,12 +410,12 @@ function Checkout() {
                 <li>Cookware</li>
               </Link>
               {/* <li>Bakeware</li> */}
-              <Link to="knives">
+              <Link to="/knives">
                 <li>Knives</li>
               </Link>
 
               {/* <li>Cutlery</li> */}
-              <Link to="contact">
+              <Link to="/contact">
                 <li>Contact us</li>
               </Link>
             </ul>
