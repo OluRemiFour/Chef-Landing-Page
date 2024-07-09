@@ -23,7 +23,7 @@ function Carts() {
                 <input
                   type="text"
                   placeholder="Search products"
-                  className="bg-[#292929] py-[14px] px-14 outline-none md:w-[20rem] lg:w-[18rem] text-[14px] rounded-md "
+                  className="bg-[#292929] py-[14px] active:text-white px-14 outline-none md:w-[20rem] lg:w-[18rem] text-[14px] rounded-md "
                 />
               </div>
             </div>
@@ -32,7 +32,7 @@ function Carts() {
           <div className="flex text-white gap-8 text-[20px]">
             <FaRegUser />
             <MdFavoriteBorder />
-            <Link>
+            <Link to="/cart">
               <BsCart2 />
               <p className="bg-red-600 absolute mt-[-1.6rem] ml-3 rounded-full px-[6px] text-center text-sm text-white">
                 2
@@ -84,7 +84,7 @@ function Carts() {
             <div className="flex text-white gap-4 text-[20px]">
               <FaRegUser />
               <MdFavoriteBorder />
-              <Link to="cart">
+              <Link to="/cart">
                 <BsCart2 />
                 <p className="bg-red-600 rounded-full text-center px-1 text-sm text-white">
                   2
