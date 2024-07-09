@@ -34,7 +34,7 @@ function Carts() {
             <MdFavoriteBorder />
             <Link to="/cart">
               <BsCart2 />
-              <p className="bg-red-600 absolute mt-[-1.6rem] ml-3 rounded-full px-[6px] text-center text-sm text-white">
+              <p className="bg-red-600 hover:bg-[#0a0a0a] duration-500 transition-all absolute mt-[-1.6rem] ml-3 rounded-full px-[6px] text-center text-sm text-white">
                 2
               </p>
             </Link>
@@ -86,7 +86,7 @@ function Carts() {
               <MdFavoriteBorder />
               <Link to="/cart">
                 <BsCart2 />
-                <p className="bg-red-600 rounded-full text-center px-1 text-sm text-white">
+                <p className="bg-red-600 hover:bg-[#0a0a0a] duration-500 transition-all absolute mt-[-1.6rem] ml-3 rounded-full px-[6px] text-center text-sm text-white">
                   2
                 </p>
               </Link>
@@ -106,7 +106,9 @@ function Carts() {
       <div className="md:py-16 mx-auto gap-[40px] md:px-6 flex flex-col py-8 md:mx-auto">
         <div className="md:flex px-10 space-y-2 font-semibold items-center justify-between">
           <h1 className="text-3xl">Cart Items</h1>
-          <button className="">Back to shopping &rarr;</button>
+          <Link to="/">
+            <button className="">Back to shopping &rarr;</button>
+          </Link>
         </div>
 
         <div className="md:grid lg:gap-[48px] lg:grid-cols-2 space-y-8 lg:space-y-0 py-10 items-center mx-auto flex flex-col justify-between">

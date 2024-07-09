@@ -36,7 +36,7 @@ function Checkout() {
                   <input
                     type="text"
                     placeholder="Ore"
-                    className="border border-black py-4 px-6 rounded-md outline-none w-full"
+                    className="border border-[#555555] py-4 px-6 rounded-md outline-none w-full"
                   />
                 </div>
 
@@ -47,7 +47,7 @@ function Checkout() {
                   <input
                     type="text"
                     placeholder="Godson"
-                    className="border border-black py-4 px-6 rounded-md outline-none w-full"
+                    className="border border-[#555555] py-4 px-6 rounded-md outline-none w-full"
                   />
                 </div>
               </div>
@@ -60,7 +60,7 @@ function Checkout() {
                   <input
                     type="text"
                     placeholder="ore@gmail.com"
-                    className="border border-black py-4 px-3 rounded-md outline-none w-full"
+                    className="border border-[#555555] py-4 px-3 rounded-md outline-none w-full"
                   />
                 </div>
 
@@ -71,7 +71,7 @@ function Checkout() {
                   <input
                     type="text"
                     placeholder="+23468000"
-                    className="border border-black py-4 px-8 rounded-md outline-none w-full"
+                    className="border border-[#555555] py-4 px-8 rounded-md outline-none w-full"
                   />
                 </div>
               </div>
@@ -87,7 +87,7 @@ function Checkout() {
                   <select
                     name=""
                     id=""
-                    className="md:w-full border w-full rounded-md outline-none border-black p-4"
+                    className="md:w-full border w-full rounded-md outline-none border-[#555555] p-4"
                   >
                     <option className="" value="">
                       Nigeria{" "}
@@ -102,7 +102,7 @@ function Checkout() {
                   <input
                     type="text"
                     placeholder="004"
-                    className="border border-black md:px-12 py-4 px-5 rounded-md outline-none w-full"
+                    className="border border-[#555555] md:px-12 py-4 px-5 rounded-md outline-none w-full"
                   />
                 </div>
               </div>
@@ -115,7 +115,7 @@ function Checkout() {
                   <select
                     name=""
                     id=""
-                    className="md:w-full border w-full rounded-md outline-none border-black p-4"
+                    className="md:w-full border w-full rounded-md outline-none border-[#555555] p-4"
                   >
                     <option className="" value="">
                       Lagos{" "}
@@ -130,7 +130,7 @@ function Checkout() {
                   <input
                     type="text"
                     placeholder="004"
-                    className="border border-black py-4 px-5 rounded-md outline-none w-full"
+                    className="border border-[#555555] py-4 px-5 rounded-md outline-none w-full"
                   />
                 </div>
               </div>
@@ -142,7 +142,7 @@ function Checkout() {
               </label>
               <input
                 type="text"
-                className="w-full border border-black py-4 px-5 outline-none rounded-md"
+                className="w-full border border-[#555555] py-4 px-5 outline-none rounded-md"
               />
             </div>
             <div className="py-2">
@@ -152,7 +152,7 @@ function Checkout() {
               <input
                 type="text"
                 id=""
-                className="w-full border border-black py-4 px-5 outline-none rounded-md"
+                className="w-full border border-[#555555] py-4 px-5 outline-none rounded-md"
               />
             </div>
 
@@ -266,10 +266,12 @@ function Checkout() {
           <div className="md:mx-14">
             <div className="flex justify-between">
               <h1 className="font-semibold py-2 px-1 text-xl">Your purchase</h1>
-              <p className="flex items-center gap-2">
-                Edit
-                <FaRegEdit />
-              </p>
+              <Link to="/cart">
+                <p className="flex items-center gap-2">
+                  Edit
+                  <FaRegEdit />
+                </p>
+              </Link>
             </div>
             {/* <div> */}
             <div className="space-y-4 p-2">
@@ -285,7 +287,7 @@ function Checkout() {
                 <p>Shipping</p>
                 <p>N0, 000</p>
               </div>
-              <div className="flex py-4 font-semibold border-t border-b border-black justify-between">
+              <div className="flex py-4 font-semibold border-t border-b border-[#555555] justify-between">
                 <p>Total</p>
                 <p>N180, 000</p>
               </div>

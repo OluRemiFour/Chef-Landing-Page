@@ -31,7 +31,7 @@ function Hero() {
               <MdFavoriteBorder />
               <Link to="/cart">
                 <BsCart2 className="relative" />
-                <p className="bg-red-600 absolute mt-[-1.6rem] ml-3 rounded-full px-[6px] text-center text-sm text-white">
+                <p className="bg-red-600 hover:bg-[#0a0a0a] duration-500 transition-all absolute mt-[-1.6rem] ml-3 rounded-full px-[6px] text-center text-sm text-white">
                   2
                 </p>
               </Link>
