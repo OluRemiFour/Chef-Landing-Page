@@ -44,7 +44,6 @@ function App() {
     }
   }
 
-  console.log(products);
 
   useEffect(() => {
     getData();
@@ -66,7 +65,6 @@ function App() {
     );
   }
   const cookware = getCookware();
-  console.log(cookware);
 
   const knives = getKnives();
   const imageBaseUrl = "https://api.timbu.cloud/images/";
@@ -144,6 +142,8 @@ function App() {
               cartCounter={cartCounter}
               imageBaseUrl={imageBaseUrl}
               productQuantities={productQuantities}
+              handleIncreaseQuantity={handleIncreaseQuantity}
+              setCartItems={setCartItems}
             />
           }
         />
