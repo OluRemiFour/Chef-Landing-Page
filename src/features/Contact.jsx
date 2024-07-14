@@ -14,7 +14,7 @@ const scrollButtonStyle = {
   borderRadius: "5px",
   cursor: "pointer",
 };
-function Contact() {
+function Contact({ cartCounter }) {
   function scrollToTop() {
     window.scrollTo({
       top: 0,
@@ -48,9 +48,9 @@ function Contact() {
             <MdFavoriteBorder />
             <Link to="/cart">
               <BsCart2 />
-              <p className="bg-red-600 absolute mt-[-1.6rem] ml-3 rounded-full px-[6px] text-center text-sm text-white">
-                2
-              </p>
+              <div className="bg-red-600 absolute mt-[-1.6rem] ml-3 rounded-full px-[6px] text-center text-sm text-white">
+                {cartCounter}
+              </div>
             </Link>
           </div>
         </div>
@@ -100,9 +100,9 @@ function Contact() {
               <MdFavoriteBorder />
               <Link to="/cart">
                 <BsCart2 />
-                <p className="bg-red-600 rounded-full text-center px-1 text-sm text-white">
-                  2
-                </p>
+                <div className="bg-red-600 rounded-full text-center px-1 text-sm text-white">
+                  {cartCounter}
+                </div>
               </Link>
             </div>
           </div>

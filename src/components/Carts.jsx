@@ -1,12 +1,17 @@
-import { MdFavoriteBorder } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { BsCart2 } from "react-icons/bs";
 import { CiSearch } from "react-icons/ci";
 import { FaRegUser } from "react-icons/fa";
-import { BsCart2 } from "react-icons/bs";
-import { MdOutlineDeleteOutline } from "react-icons/md";
+import { MdFavoriteBorder, MdOutlineDeleteOutline } from "react-icons/md";
+import { Link } from "react-router-dom";
 import Footer from "./Footer";
 
-function Carts() {
+function Carts({
+  cartCounter,
+  handleRemoveFromCart,
+  cartItems,
+  productQuantities,
+  imageBaseUrl,
+}) {
   return (
     <>
       <div className="hidden md:block">
@@ -34,9 +39,9 @@ function Carts() {
             <MdFavoriteBorder />
             <Link to="/cart">
               <BsCart2 />
-              <p className="bg-red-600 hover:bg-[#0a0a0a] duration-500 transition-all absolute mt-[-1.6rem] ml-3 rounded-full px-[6px] text-center text-sm text-white">
-                2
-              </p>
+              <div className="bg-red-600 hover:bg-[#0a0a0a] duration-500 transition-all absolute mt-[-1.6rem] ml-3 rounded-full px-[6px] text-center text-sm text-white">
+                {cartCounter}
+              </div>
             </Link>
           </div>
         </div>
@@ -86,9 +91,9 @@ function Carts() {
               <MdFavoriteBorder />
               <Link to="/cart">
                 <BsCart2 />
-                <p className="bg-red-600 hover:bg-[#0a0a0a] duration-500 transition-all absolute mt-[-1.6rem] ml-3 rounded-full px-[6px] text-center text-sm text-white">
-                  2
-                </p>
+                <div className="bg-red-600 hover:bg-[#0a0a0a] duration-500 transition-all absolute mt-[-1.6rem] ml-3 rounded-full px-[6px] text-center text-sm text-white">
+                  {cartCounter}
+                </div>
               </Link>
             </div>
           </div>
@@ -112,104 +117,80 @@ function Carts() {
         </div>
 
         <div className="md:grid lg:gap-[48px] lg:grid-cols-2 space-y-8 lg:space-y-0 py-10 items-center mx-auto flex flex-col justify-between">
-          <div className="justify-between md:space-y-0 lg:space-y-4 space-y-4 gap-[48px] md:flex lg:block">
-            <div className="lg:flex p-4 gap-3 w-fit border h-fit">
-              <img src="/img.png" alt="img" className="w-full lg:w-fit" />
-              <div className="space-y-1">
-                <div className="flex font-semibold py-2 items-center justify-between">
-                  <h1>Classic Non-stick Set</h1>
-                  <p>N100, 000</p>
-                </div>
+          <div>
+            {cartItems.map((cart, index) => (
+              <div
+                key={index}
+                className="justify-between md:space-y-0 lg:space-y-4 space-y-4 gap-[48px] md:flex lg:block"
+              >
+                <div className="lg:flex p-4 gap-3 border lg:h-fit">
+                  {/* <img src={} alt="img" className="w-full lg:w-fit" /> */}
+                  <img
+                    src={`${imageBaseUrl}${cart.photos[0].url}`}
+                    alt={cart.name}
+                    className="lg:w-1/6 lg:h-fit"
+                  />
 
-                <div className="flex py-2 items-center justify-between">
-                  <p>Available colors</p>
-                  <div className="flex gap-2">
-                    <div className="bg-[#E0DFFE] font-semibold rounded-full border ring ring-gray-500 h-[15px] w-[15px]"></div>
-                    <div className="bg-[#5754BA] rounded-full h-[15px] w-[15px]"></div>
-                    <div className="bg-[#DEAE55] rounded-full h-[15px] w-[15px]"></div>
-                  </div>
-                </div>
+                  <div className="space-y-1">
+                    <div className="flex font-semibold py-2 items-center justify-between">
+                      <h1>{cart.name}</h1>
+                      <p>N190, 000</p>
+                    </div>
 
-                <div className="flex justify-between gap-6 items-center">
-                  <div className="flex space-x-2 items-center">
-                    <MdFavoriteBorder />
-                    <p>Move to wishlist</p>
-                    <p className="flex items-center">
-                      <MdOutlineDeleteOutline />
-                      <p className="hidden md:block">Delete</p>
-                    </p>
-                  </div>
+                    <div className="flex py-2 items-center justify-between">
+                      <p>Available colors</p>
+                      <div className="flex gap-2">
+                        <div className="bg-[#E0DFFE] font-semibold rounded-full border ring ring-gray-500 h-[15px] w-[15px]"></div>
+                        <div className="bg-[#5754BA] rounded-full h-[15px] w-[15px]"></div>
+                        <div className="bg-[#DEAE55] rounded-full h-[15px] w-[15px]"></div>
+                      </div>
+                    </div>
 
-                  <div>
-                    <div className="flex justify-between space-x-2 items-center">
-                      <p className="hidden lg:block">Quantity</p>
-                      <div className="border border-black">
-                        <input
-                          type="number"
-                          placeholder="1"
-                          className="border text-center w-10"
-                        />
-                        <select name="" className="outline-none"></select>
+                    <div className="flex justify-between gap-6 items-center">
+                      <div className="flex space-x-2 items-center">
+                        <MdFavoriteBorder />
+                        <p>Move to wishlist</p>
+                        <div
+                          onClick={() => handleRemoveFromCart(cart)}
+                          className="flex items-center"
+                        >
+                          <MdOutlineDeleteOutline />
+                          <button className="hidden md:block">Delete</button>
+                        </div>
+                      </div>
+
+                      <div>
+                        <div className="flex justify-between space-x-2 items-center">
+                          <p className="hidden lg:block">Quantity</p>
+                          <div className="border border-black">
+                            <input
+                              type="number"
+                              placeholder=""
+                              className="border text-center w-10"
+                            />
+                            <select name="" className="outline-none">
+                              <option value="">1</option>
+                              <option value="">2</option>
+                              <option value="">3</option>
+                              <option value="">4</option>
+                            </select>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            <div className="lg:flex p-4 gap-3 w-fit border h-fit">
-              <img src="/img1.png" alt="img" className="w-full lg:w-fit" />
-              <div className="space-y-1">
-                <div className="flex font-semibold py-2 items-center justify-between">
-                  <h1>Classic Non-stick Set</h1>
-                  <p>N100, 000</p>
-                </div>
-
-                <div className="flex py-2 items-center justify-between">
-                  <p>Available colors</p>
-                  <div className="flex gap-2">
-                    <div className="bg-[#E0DFFE] font-semibold rounded-full border ring ring-gray-500 h-[15px] w-[15px]"></div>
-                    <div className="bg-[#5754BA] rounded-full h-[15px] w-[15px]"></div>
-                    <div className="bg-[#DEAE55] rounded-full h-[15px] w-[15px]"></div>
-                  </div>
-                </div>
-
-                <div className="flex justify-between gap-6 items-center">
-                  <div className="flex space-x-2 items-center">
-                    <MdFavoriteBorder />
-                    <p>Move to wishlist</p>
-                    <p className="flex items-center">
-                      <MdOutlineDeleteOutline />
-                      <p className="hidden md:block">Delete</p>
-                    </p>
-                  </div>
-
-                  <div>
-                    <div className="flex justify-between space-x-2 items-center">
-                      <p className="hidden lg:block">Quantity</p>
-                      <div className="border border-black">
-                        <input
-                          type="number"
-                          placeholder="1"
-                          className="border text-center w-10"
-                        />
-                        <select name="" className="outline-none"></select>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
-
           <div className="md:mx-18 space-y-4 p-2">
             <div className="flex font-semibold text-lg justify-between">
               <h1>Order Summary</h1>
-              <p>2 item</p>
+              <p>{cartCounter} item</p>
             </div>
             <div className="flex justify-between">
               <p>Subtotal</p>
-              <p>N180, 000</p>
+              {/* <div>{cartItems ? productQuantities : "0.00"}</div> */}
             </div>
             <div className="flex py-2 justify-between">
               <p>Shipping</p>
@@ -217,7 +198,7 @@ function Carts() {
             </div>
             <div className="flex py-4 font-semibold border-t border-b border-[#dffeff] justify-between">
               <p>Total</p>
-              <p>N180, 000</p>
+              {/* <div>{cartItems ? productQuantities : "0.00"}</div> */}
             </div>
 
             <div className="flex py-2 justify-between">

@@ -3,12 +3,12 @@ import { FaRegUser } from "react-icons/fa";
 import { MdFavoriteBorder } from "react-icons/md";
 import { BsCart2 } from "react-icons/bs";
 import { Link, NavLink } from "react-router-dom";
-import Cookware from "../features/Cookware";
+// import Cookware from "../features/Cookware";
 import Group from "../../public/Group.png";
 // import HeroImage from "../../public/heroback.png";
 // import smallImage from "../../public/small.png";
 
-function Hero() {
+function Hero({ cartCounter }) {
   return (
     <>
       <div className="md:hidden">
@@ -31,9 +31,9 @@ function Hero() {
               <MdFavoriteBorder />
               <Link to="/cart">
                 <BsCart2 className="relative" />
-                <p className="bg-red-600 hover:bg-[#0a0a0a] duration-500 transition-all absolute mt-[-1.6rem] ml-3 rounded-full px-[6px] text-center text-sm text-white">
-                  2
-                </p>
+                <div className="bg-red-600 hover:bg-[#0a0a0a] duration-500 transition-all absolute mt-[-1.6rem] ml-3 rounded-full px-[6px] text-center text-sm text-white">
+                  {cartCounter}
+                </div>
               </Link>
             </div>
           </div>
@@ -86,9 +86,9 @@ function Hero() {
             <MdFavoriteBorder />
             <Link to="/cart">
               <BsCart2 className="" />
-              <p className="bg-red-600 hover:bg-[#0a0a0a] duration-500 transition-all absolute mt-[-1.6rem] ml-3 rounded-full px-[6px] text-center text-sm text-white">
-                2
-              </p>
+              <div className="bg-red-600 hover:bg-[#0a0a0a] duration-500 transition-all absolute mt-[-1.6rem] ml-3 rounded-full px-[6px] text-center text-sm text-white">
+                {cartCounter}
+              </div>
             </Link>
           </div>
         </div>
@@ -132,7 +132,7 @@ function Hero() {
           </div>
         </div>
       </div>
-      <Cookware />
+      {/* <Cookware /> */}
     </>
   );
 }
