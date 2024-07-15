@@ -60,7 +60,6 @@ function App() {
       (item) =>
         item.name.toLowerCase().includes("-") ||
         item.name.toLowerCase().includes("stain")
-      // item.name.toLowerCase().includes("kettle")
     );
   }
   const cookware = getCookware();

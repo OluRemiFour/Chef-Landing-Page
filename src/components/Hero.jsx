@@ -1,12 +1,9 @@
+import { BsCart2 } from "react-icons/bs";
 import { CiSearch } from "react-icons/ci";
 import { FaRegUser } from "react-icons/fa";
 import { MdFavoriteBorder } from "react-icons/md";
-import { BsCart2 } from "react-icons/bs";
 import { Link, NavLink } from "react-router-dom";
-// import Cookware from "../features/Cookware";
 import Group from "../../public/Group.png";
-// import HeroImage from "../../public/heroback.png";
-// import smallImage from "../../public/small.png";
 
 function Hero({ cartCounter }) {
   return (

@@ -3,7 +3,7 @@ import { BsCart2 } from "react-icons/bs";
 import { MdFavoriteBorder } from "react-icons/md";
 
 function Cookware({ handleAddToCart, imageBaseUrl, cookware }) {
-  const itemsPerPage = 3; // Number of items per page
+  const itemsPerPage = 3; 
   const [currentPage, setCurrentPage] = useState(1);
 
   const handlePageChange = (page) => {
