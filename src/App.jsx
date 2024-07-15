@@ -30,10 +30,6 @@ function App() {
   const Appid = "AQKRXIFY3CJKCZT";
   const apiORG = "40385cacf48b47a6a18187dc6c51d83d";
 
-  // VITE_API_ORG = "40385cacf48b47a6a18187dc6c51d83d";
-  // VITE_API_KEY = "d6f36fb58d0a465d8c08797c6f2f8dae20240713120014255280";
-  // VITE_API_ID = "AQKRXIFY3CJKCZT";
-
   const baseUrl = `https://timbu-get-all-products.reavdev.workers.dev/?organization_id=${apiORG}&reverse_sort=false&page=1&size=30&Appid=${Appid}&Apikey=${Apikey}`;
 
   async function getData() {
@@ -114,12 +110,37 @@ function App() {
     0
   );
   const total = subtotal;
+  // Search Products
+  const [query, setQuery] = useState("");
+  const [searchItem, setSearchItem] = useState("");
+
+  function handleSearch(e) {
+    const value = e.target.value;
+    setQuery(value);
+
+    const SearchProduct = Object(products).filter((products) =>
+      products.name.toLowerCase().includes(value.toLowerCase())
+    );
+
+    setSearchItem(SearchProduct);
+  }
+  console.log(searchItem);
 
   return (
     <BrowserRouter>
       <ScrollToTop />
       <Routes>
-        <Route path="" element={<AppLayout cartCounter={cartCounter} />}>
+        <Route
+          path=""
+          element={
+            <AppLayout
+              handleSearch={handleSearch}
+              query={query}
+              cartCounter={cartCounter}
+              products={products}
+            />
+          }
+        >
           <Route
             path="/"
             element={
@@ -127,6 +148,7 @@ function App() {
                 cookware={cookware}
                 handleAddToCart={handleAddToCart}
                 imageBaseUrl={imageBaseUrl}
+                searchItem={searchItem}
               />
             }
           />
@@ -138,6 +160,7 @@ function App() {
                 imageBaseUrl={imageBaseUrl}
                 knives={knives}
                 cartCounter={cartCounter}
+                searchItem={searchItem}
               />
             }
           />

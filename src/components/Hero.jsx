@@ -4,8 +4,24 @@ import { FaRegUser } from "react-icons/fa";
 import { MdFavoriteBorder } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
 import Group from "../../public/Group.png";
+import { useState } from "react";
 
-function Hero({ cartCounter }) {
+function Hero({ handleSearch, query, cartCounter, products }) {
+  // const [query, setQuery] = useState("");
+  // const [searchItem, setSearchItem] = useState("");
+
+  // function handleSearch(e) {
+  //   const value = e.target.value;
+  //   setQuery(value);
+
+  //   const SearchProduct = Object(products).filter((products) =>
+  //     products.name.toLowerCase().includes(value.toLowerCase())
+  //   );
+
+  //   setSearchItem(SearchProduct);
+  // }
+  // console.log(searchItem);
+
   return (
     <>
       <div className="md:hidden">
@@ -39,6 +55,8 @@ function Hero({ cartCounter }) {
             <input
               type="text"
               placeholder="Search products"
+              // value={searchItem}
+
               className="bg-[#292929] py-4 px-16 outline-none w-[23rem] text-lg rounded-md text-white"
             />
           </div>
@@ -64,14 +82,14 @@ function Hero({ cartCounter }) {
             <div className="flex items-center">
               <div>
                 <h1 className="font-extrabold text-white text-4xl">CHEF</h1>
-
-                {/* <img src="/LOGO.png" /> */}
               </div>
               <div className="flex space-x-7">
                 <CiSearch className="absolute size-6 text-gray-400 my-3 mx-12" />
                 <input
                   type="text"
                   placeholder="Search products"
+                  value={query}
+                  onChange={handleSearch}
                   className="bg-[#292929] py-[14px] px-14 outline-none md:w-[20rem] lg:w-[18rem] text-[14px] text-white rounded-md "
                 />
               </div>
@@ -129,7 +147,6 @@ function Hero({ cartCounter }) {
           </div>
         </div>
       </div>
-      {/* <Cookware /> */}
     </>
   );
 }

@@ -2,11 +2,15 @@ import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 
-function AppLayout({ cartCounter }) {
+function AppLayout({ handleSearch, query, cartCounter, products }) {
   return (
     <div>
-      <Hero cartCounter={cartCounter} />
-      {/* <Cookware /> */}
+      <Hero
+        query={query}
+        handleSearch={handleSearch}
+        cartCounter={cartCounter}
+        products={products}
+      />
       <Outlet />
       <Footer />
     </div>
