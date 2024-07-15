@@ -2,7 +2,13 @@ import { useState } from "react";
 import { BsCart2 } from "react-icons/bs";
 import { MdFavoriteBorder } from "react-icons/md";
 
-function ProductList({ knives, handleAddToCart, imageBaseUrl, searchItem }) {
+function ProductList({
+  knives,
+  handleAddToCart,
+  imageBaseUrl,
+  searchItem,
+  products,
+}) {
   const itemsPerPage = 3;
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -27,7 +33,9 @@ function ProductList({ knives, handleAddToCart, imageBaseUrl, searchItem }) {
 
       <div>
         <div className="flex items-center justify-between m-8">
-          <p className="">6 items found </p>
+          {/* <p className="">6 items found </p> */}
+          <p>{searchItem ? "" : knives?.length} items found</p>
+
           <div className="border p-2">
             {" "}
             Sort by:
@@ -41,6 +49,7 @@ function ProductList({ knives, handleAddToCart, imageBaseUrl, searchItem }) {
           </div>
         </div>
       </div>
+
       {searchItem ? (
         <div className="md:grid md:grid-cols-3 gap-4 space-y-4 md:space-y-0">
           {searchItem?.map((knife, index) => (
@@ -51,7 +60,7 @@ function ProductList({ knives, handleAddToCart, imageBaseUrl, searchItem }) {
               <div>
                 {knife.photos && knife.photos?.length > 0 && (
                   <img
-                    src={`${imageBaseUrl}${knife.photos[0].url}`}
+                    src={knife.photos}
                     alt={knife.name}
                     className="size-full"
                   />
@@ -63,7 +72,7 @@ function ProductList({ knives, handleAddToCart, imageBaseUrl, searchItem }) {
 
               <div className="flex justify-between font-semibold">
                 <h1>{knife.name}</h1>
-                <p>N190</p>
+                <p>{knife.price}</p>
               </div>
               <h3 className="text-[14px] w-fit">
                 This 5-quart pot is crafted from high-quality, durable materials
@@ -108,7 +117,8 @@ function ProductList({ knives, handleAddToCart, imageBaseUrl, searchItem }) {
               <div>
                 {knife.photos && knife.photos?.length > 0 && (
                   <img
-                    src={`${imageBaseUrl}${knife.photos[0].url}`}
+                    // src={`${imageBaseUrl}${knife.photos[0].url}`}
+                    src={knife.photos}
                     alt={knife.name}
                     className="size-full"
                   />
@@ -120,7 +130,7 @@ function ProductList({ knives, handleAddToCart, imageBaseUrl, searchItem }) {
 
               <div className="flex justify-between font-semibold">
                 <h1>{knife.name}</h1>
-                <p>N190</p>
+                <p>{knife.price}</p>
               </div>
               <h3 className="text-[14px] w-fit">
                 This 5-quart pot is crafted from high-quality, durable materials

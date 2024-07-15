@@ -4,6 +4,7 @@ import { FaRegUser } from "react-icons/fa";
 import { MdFavoriteBorder, MdOutlineDeleteOutline } from "react-icons/md";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
+import { useState } from "react";
 
 function Carts({
   cartCounter,
@@ -12,27 +13,23 @@ function Carts({
   imageBaseUrl,
   setCartItems,
 }) {
-  const defaultPrice = 190;
+  // const defaultPrice = 190;
 
   const handleQuantityChange = (event, cartItem) => {
     const newQuantity = parseInt(event.target.value, 10);
 
     setCartItems((prevCartItems) =>
       prevCartItems?.map((item) =>
-        item.unique_id === cartItem.unique_id
-          ? { ...item, quantity: newQuantity }
-          : item
+        item.id === cartItem.id ? { ...item, quantity: newQuantity } : item
       )
     );
   };
 
-  const price = 190 * cartCounter;
-  const subtotal = cartItems.reduce(
-    (acc, cart) => acc + cart.quantity * defaultPrice || price,
-    0
-  );
-  const total = subtotal;
+  const subtotal = cartItems
+    ?.map((cart) => cart.price * (cart.quantity || 1)) // Map each cart item to its total price
+    .reduce((acc, price) => acc + price, 0); // Sum up all the total prices
 
+  const total = subtotal;
   return (
     <>
       <div className="hidden md:block">
@@ -139,7 +136,8 @@ function Carts({
               >
                 <div className="lg:flex p-4 gap-3 border lg:h-fit">
                   <img
-                    src={`${imageBaseUrl}${cart.photos[0].url}`}
+                    // src={`${imageBaseUrl}${cart.photos[0].url}`}
+                    src={cart.photos}
                     alt={cart.name}
                     className="w-full lg:w-1/6 lg:h-fit"
                   />
@@ -148,9 +146,9 @@ function Carts({
                     <div className="flex font-semibold py-2 items-center justify-between md:gap-60">
                       <h1>{cart.name}</h1>
                       <p>
-                        {`N${(defaultPrice * cart.quantity || 190).toFixed(
+                        {`N${(cart.price * cart.quantity || cart.price).toFixed(
                           2
-                        )}` || 0}
+                        )}`}
                       </p>
                     </div>
 

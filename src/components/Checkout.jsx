@@ -1,14 +1,81 @@
-import { FaRegEdit } from "react-icons/fa";
+import { useState } from "react";
+import toast from "react-hot-toast";
 import { CiCreditCard1 } from "react-icons/ci";
+import { FaRegEdit } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { usePaystack } from "./usePayStack";
 
-function Checkout({ cartItems, cartCounter, imageBaseUrl }) {
-  const price = 190 * cartCounter;
-  const subtotal = cartItems.reduce(
-    (acc, cart) => acc + cart.quantity * 190 || price,
-    0
-  );
+function Checkout({ cartItems, cartCounter, setCartItems }) {
+  const [shipping, setShipping] = useState(0);
+
+  const subtotal = cartItems
+    ?.map((cart) => cart.price * (cart.quantity || 1)) // Map each cart item to its total price
+    .reduce((acc, price) => acc + price + shipping, 0); // Sum up all the total prices
+
+  const cart = cartItems.map((cart, i) => {
+    return cart.price;
+  });
+  const qty = cartItems.map((cart, i) => {
+    return cart.quantity;
+  });
+
+  function clearCart() {
+    setCartItems([]);
+  }
+  const [everyToggle, setTEveryToggle] = useState(false);
+  const [abcToggle, setABCToggle] = useState(false);
+  const [goodToggle, setGoodToggle] = useState();
+  const [email, setEmail] = useState();
+  const [name, setName] = useState();
+  const [phone, setPhone] = useState();
+  const [address, setAddress] = useState();
+
+  function handleEveryToggle() {
+    setTEveryToggle((toggle) => !toggle);
+    if (!everyToggle) {
+      setShipping(10000);
+    } else {
+      setShipping(0);
+    }
+  }
+  function handleABCToggle() {
+    setABCToggle((toggle) => !toggle);
+
+    if (!abcToggle) {
+      setShipping(6500);
+    } else {
+      setShipping(0);
+    }
+  }
+  function handleGoodToggle() {
+    setGoodToggle((toggle) => !toggle);
+
+    if (!goodToggle) {
+      setShipping(4000);
+    } else {
+      setShipping(0);
+    }
+  }
+
   const total = subtotal;
+  const publicKey = "pk_test_dcfa3d8202774206e8f20cc79886e77e10fc9862";
+  const amount = total * 100;
+
+  const onSuccess = () =>
+    toast.success("Thanks for doing business with us! Come back soon!!");
+  const onClose = () => toast.error("Wait! Don't leave :(");
+
+  const { initializePayment } = usePaystack({
+    email,
+    amount,
+    name,
+    phone,
+    address,
+    publicKey,
+    onSuccess,
+    onClose,
+    clearCart,
+  });
 
   return (
     <>
@@ -43,6 +110,7 @@ function Checkout({ cartItems, cartCounter, imageBaseUrl }) {
                   <input
                     type="text"
                     placeholder="Ore"
+                    onChange={(e) => setName(e.target.value)}
                     className="border border-[#555555] py-4 px-6 rounded-md outline-none w-full"
                   />
                 </div>
@@ -62,11 +130,12 @@ function Checkout({ cartItems, cartCounter, imageBaseUrl }) {
               <div className="flex justify-between gap-3 items-center">
                 <div className="py-2">
                   <label htmlFor="" className="text-slate-700">
-                    Email address{" "}
+                    Email address
                   </label>
                   <input
                     type="text"
                     placeholder="ore@gmail.com"
+                    onChange={(e) => setEmail(e.target.value)}
                     className="border border-[#555555] py-4 px-3 rounded-md outline-none w-full"
                   />
                 </div>
@@ -78,6 +147,7 @@ function Checkout({ cartItems, cartCounter, imageBaseUrl }) {
                   <input
                     type="text"
                     placeholder="+23468000"
+                    onChange={(e) => setPhone(e.target.value)}
                     className="border border-[#555555] py-4 px-8 rounded-md outline-none w-full"
                   />
                 </div>
@@ -108,7 +178,7 @@ function Checkout({ cartItems, cartCounter, imageBaseUrl }) {
                   </label>
                   <input
                     type="text"
-                    placeholder="004"
+                    placeholder="Lagos"
                     className="border border-[#555555] md:px-12 py-4 px-5 rounded-md outline-none w-full"
                   />
                 </div>
@@ -149,6 +219,7 @@ function Checkout({ cartItems, cartCounter, imageBaseUrl }) {
               </label>
               <input
                 type="text"
+                onChange={(e) => setAddress(e.target.value)}
                 className="w-full border border-[#555555] py-4 px-5 outline-none rounded-md"
               />
             </div>
@@ -172,11 +243,18 @@ function Checkout({ cartItems, cartCounter, imageBaseUrl }) {
 
             <div className="py-8 space-y-4">
               <h1 className="font-semibold py-2">Shipping method</h1>
-              <div className="flex justify-between px-6 py-4 space-x-2 border border-[#DB6A18]">
+              <div
+                onClick={handleEveryToggle}
+                className={`flex justify-between px-6 py-4 space-x-2 border ${
+                  everyToggle ? "border border-[#DB6A18]" : "border"
+                }`}
+              >
                 <div className="flex space-x-3 py-2 items-start">
                   <label
                     htmlFor=""
-                    className="bg-[#DB6A18] px-1 w-5 h-5 rounded-full"
+                    className={`px-1 w-5 h-5 rounded-full ${
+                      everyToggle ? "bg-[#DB6A18]" : ""
+                    }`}
                   >
                     <input type="radio" className="" />
                   </label>
@@ -190,10 +268,20 @@ function Checkout({ cartItems, cartCounter, imageBaseUrl }) {
                 <p className="font-semibold">N10,000</p>
               </div>
 
-              <div className="flex justify-between px-6 py-4 space-x-2 border">
+              <div
+                onClick={handleABCToggle}
+                className={`flex justify-between px-6 py-4 space-x-2 border ${
+                  abcToggle ? "border border-[#DB6A18]" : "border"
+                }`}
+              >
                 <div className="flex space-x-3 py-2 items-start">
-                  <label htmlFor="" className="px-1 w-5 h-5 rounded-full">
-                    <input type="radio" className="size-[1.1rem]" />
+                  <label
+                    htmlFor=""
+                    className={`px-1 w-5 h-5 rounded-full ${
+                      abcToggle ? "bg-[#DB6A18]" : ""
+                    }`}
+                  >
+                    <input type="radio" className="" />
                   </label>
                   <div>
                     <p className="font-semibold">ABC transport company</p>
@@ -205,10 +293,20 @@ function Checkout({ cartItems, cartCounter, imageBaseUrl }) {
                 <p className="font-semibold">N6,500</p>
               </div>
 
-              <div className="flex justify-between px-6 py-4 space-x-2 border">
+              <div
+                onClick={handleGoodToggle}
+                className={`flex justify-between px-6 py-4 space-x-2 border ${
+                  goodToggle ? "border border-[#DB6A18]" : "border"
+                }`}
+              >
                 <div className="flex space-x-3 py-2 items-start">
-                  <label htmlFor="" className="px-1 w-5 h-5 rounded-full">
-                    <input type="radio" className="size-[1.1rem]" />
+                  <label
+                    htmlFor=""
+                    className={`px-1 w-5 h-5 rounded-full ${
+                      goodToggle ? "bg-[#DB6A18]" : ""
+                    }`}
+                  >
+                    <input type="radio" className="" />
                   </label>
                   <div>
                     <p className="font-semibold">Goodtour bus company</p>
@@ -263,7 +361,10 @@ function Checkout({ cartItems, cartCounter, imageBaseUrl }) {
               </label>
             </div>
             <div className="hidden md:block py-6">
-              <button className="bg-black rounded-md p-5 text-white w-full">
+              <button
+                onClick={() => initializePayment(onSuccess, onClose)}
+                className="bg-black rounded-md p-5 text-white w-full"
+              >
                 Procced to payment &rarr;
               </button>
             </div>
@@ -292,7 +393,7 @@ function Checkout({ cartItems, cartCounter, imageBaseUrl }) {
               </div>
               <div className="flex py-2 justify-between">
                 <p>Shipping</p>
-                <p>N0, 000</p>
+                <p>{shipping || 0.0}</p>
               </div>
               <div className="flex py-4 font-semibold border-t border-b border-[#555555] justify-between">
                 <p>Total</p>
@@ -307,7 +408,7 @@ function Checkout({ cartItems, cartCounter, imageBaseUrl }) {
                   <div className="flex justify-between">
                     <div className="flex md:gap-4 gap-2">
                       <img
-                        src={`${imageBaseUrl}${cart.photos[0].url}`}
+                        src={cart.photos}
                         alt={cart.name}
                         className="w-[30%] md:h-fit"
                       />
@@ -320,39 +421,23 @@ function Checkout({ cartItems, cartCounter, imageBaseUrl }) {
 
                     <div className="space-y-3">
                       <p>
-                        {`N${(190 * cart.quantity || 190).toFixed(2)}` || 0}
+                        {`N${(cart.price * cart.quantity || cart.price).toFixed(
+                          2
+                        )}` || 0}
                       </p>
                       <div className="bg-[#E0DFFE] font-semibold rounded-full border ring ring-gray-500 h-[15px] w-[16px]"></div>
                       <p>{cart.quantity || "1"}</p>
                     </div>
                   </div>
-
-                  {/* <div className="flex justify-between">
-                    <div className="flex md:gap-4 gap-2">
-                      <img
-                        src={`${imageBaseUrl}${cart.photos[0].url}`}
-                        alt={cart.name}
-                        className="w-[30%] md:h-fit"
-                      />
-                      <div className="space-y-2">
-                        <p className="font-semibold"></p>
-                        <p>Color selected</p>
-                        <p>Quantity</p>
-                      </div>
-                    </div>
-
-                    <div className="space-y-3">
-                      <p>N100, 000</p>
-                      <div className="bg-[#000] font-semibold rounded-full border ring ring-gray-500 h-[15px] w-[16px]"></div>
-                      <p>1</p>
-                    </div>
-                  </div> */}
                 </div>
               ))}
             </div>
 
             <div className="block md:hidden py-6">
-              <button className="bg-black rounded-md p-5 text-white w-full">
+              <button
+                onClick={() => initializePayment(onSuccess, onClose)}
+                className="bg-black rounded-md p-5 text-white w-full"
+              >
                 Procced to payment &rarr;
               </button>
             </div>

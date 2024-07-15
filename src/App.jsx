@@ -6,6 +6,7 @@ import Checkout from "./components/Checkout";
 import Contact from "./features/Contact";
 import Knives from "./features/Knives";
 import { useEffect, useState } from "react";
+import Data from "./components/Data";
 
 function App() {
   const ScrollToTop = () => {
@@ -26,28 +27,14 @@ function App() {
   const [cartCounter, setCartCounter] = useState(0);
   const [productQuantities, setProductQuantities] = useState({});
 
-  const Apikey = "d6f36fb58d0a465d8c08797c6f2f8dae20240713120014255280";
-  const Appid = "AQKRXIFY3CJKCZT";
-  const apiORG = "40385cacf48b47a6a18187dc6c51d83d";
-
-  const baseUrl = `https://timbu-get-all-products.reavdev.workers.dev/?organization_id=${apiORG}&reverse_sort=false&page=1&size=30&Appid=${Appid}&Apikey=${Apikey}`;
-
-  async function getData() {
-    try {
-      const res = await fetch(baseUrl);
-      if (!res.ok) {
-        throw new Error(`HTTP error! status: ${res.status}`);
-      }
-      const data = await res.json();
-      setProducts(data.items);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  }
-
   useEffect(() => {
     getData();
   }, []);
+
+  function getData() {
+    setProducts(Data);
+    products.map((itm) => console.log(itm));
+  }
 
   function getKnives() {
     return products?.filter(
@@ -57,11 +44,7 @@ function App() {
     );
   }
   function getCookware() {
-    return products?.filter(
-      (item) =>
-        item.name.toLowerCase().includes("-") ||
-        item.name.toLowerCase().includes("stain")
-    );
+    return products?.filter((item) => item.name.toLowerCase().includes("-"));
   }
   const cookware = getCookware();
   const knives = getKnives();
@@ -72,23 +55,22 @@ function App() {
     setCartCounter((prevCount) => prevCount + 1);
     setProductQuantities((prevQuantities) => {
       const updatedQuantities = { ...prevQuantities };
-      updatedQuantities[item.unique_id] =
-        (updatedQuantities[item.unique_id] || 0) + 1;
+      updatedQuantities[item.id] = (updatedQuantities[item.id] || 0) + 1;
       return updatedQuantities;
     });
   };
 
   const handleRemoveFromCart = (item) => {
     setCartItems((prevCartItems) =>
-      prevCartItems?.filter((cartItem) => cartItem.unique_id !== item.unique_id)
+      prevCartItems?.filter((cartItem) => cartItem.id !== item.id)
     );
     setCartCounter((prevCount) => prevCount - 1);
     setProductQuantities((prevQuantities) => {
       const updatedQuantities = { ...prevQuantities };
-      if (updatedQuantities[item.unique_id]) {
-        updatedQuantities[item.unique_id] -= 1;
-        if (updatedQuantities[item.unique_id] === 0) {
-          delete updatedQuantities[item.unique_id];
+      if (updatedQuantities[item.id]) {
+        updatedQuantities[item.id] -= 1;
+        if (updatedQuantities[item.id] === 0) {
+          delete updatedQuantities[item.id];
         }
       }
       return updatedQuantities;
@@ -98,8 +80,7 @@ function App() {
   const handleIncreaseQuantity = (item) => {
     setProductQuantities((prevQuantities) => {
       const updatedQuantities = { ...prevQuantities };
-      updatedQuantities[item.unique_id] =
-        (updatedQuantities[item.unique_id] || 0) + 1;
+      updatedQuantities[item.id] = (updatedQuantities[item.id] || 0) + 1;
       return updatedQuantities;
     });
   };
@@ -123,7 +104,7 @@ function App() {
     );
     setSearchItem(SearchProduct);
   }
-  console.log(searchItem);
+  // console.log(searchItem);
 
   return (
     <BrowserRouter>
@@ -148,6 +129,7 @@ function App() {
                 handleAddToCart={handleAddToCart}
                 imageBaseUrl={imageBaseUrl}
                 searchItem={searchItem}
+                products={products}
               />
             }
           />
@@ -160,6 +142,7 @@ function App() {
                 knives={knives}
                 cartCounter={cartCounter}
                 searchItem={searchItem}
+                products={products}
               />
             }
           />
@@ -172,6 +155,7 @@ function App() {
               handleRemoveFromCart={handleRemoveFromCart}
               cartCounter={cartCounter}
               imageBaseUrl={imageBaseUrl}
+              products={products}
               productQuantities={productQuantities}
               handleIncreaseQuantity={handleIncreaseQuantity}
               setCartItems={setCartItems}
@@ -185,7 +169,9 @@ function App() {
               cartItems={cartItems}
               cartCounter={cartCounter}
               imageBaseUrl={imageBaseUrl}
+              products={products}
               total={total}
+              setCartItems={setCartItems}
             />
           }
         />
