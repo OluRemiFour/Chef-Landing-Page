@@ -44,20 +44,19 @@ function App() {
     }
   }
 
-
   useEffect(() => {
     getData();
   }, []);
 
   function getKnives() {
-    return products.filter(
+    return products?.filter(
       (item) =>
         item.name.toLowerCase().includes("knife") ||
         item.name.toLowerCase().includes("hand")
     );
   }
   function getCookware() {
-    return products.filter(
+    return products?.filter(
       (item) =>
         item.name.toLowerCase().includes("-") ||
         item.name.toLowerCase().includes("stain")
@@ -82,7 +81,7 @@ function App() {
 
   const handleRemoveFromCart = (item) => {
     setCartItems((prevCartItems) =>
-      prevCartItems.filter((cartItem) => cartItem.unique_id !== item.unique_id)
+      prevCartItems?.filter((cartItem) => cartItem.unique_id !== item.unique_id)
     );
     setCartCounter((prevCount) => prevCount - 1);
     setProductQuantities((prevQuantities) => {
