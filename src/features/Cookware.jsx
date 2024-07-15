@@ -115,8 +115,8 @@ function Cookware({ handleAddToCart, imageBaseUrl, cookware }) {
   };
 
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const selectedItems = cookware.slice(startIndex, startIndex + itemsPerPage);
-  const totalPages = Math.ceil(cookware.length / itemsPerPage);
+  const selectedItems = cookware?.slice(startIndex, startIndex + itemsPerPage);
+  const totalPages = Math.ceil(cookware?.length / itemsPerPage);
 
   return (
     <>

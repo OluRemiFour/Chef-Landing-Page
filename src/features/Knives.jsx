@@ -116,9 +116,9 @@ function ProductList({ knives, handleAddToCart, imageBaseUrl }) {
   };
 
   const startIndex = (currentPage - 1) * itemsPerPage;
-  const selectedItems = knives.slice(startIndex, startIndex + itemsPerPage);
+  const selectedItems = knives?.slice(startIndex, startIndex + itemsPerPage);
 
-  const totalPages = Math.ceil(knives.length / itemsPerPage);
+  const totalPages = Math.ceil(knives?.length / itemsPerPage);
 
   return (
     <div className="lg:mx-16 my-14">
