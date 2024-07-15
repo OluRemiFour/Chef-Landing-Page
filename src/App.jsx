@@ -121,7 +121,6 @@ function App() {
     const SearchProduct = Object(products).filter((products) =>
       products.name.toLowerCase().includes(value.toLowerCase())
     );
-
     setSearchItem(SearchProduct);
   }
   console.log(searchItem);
