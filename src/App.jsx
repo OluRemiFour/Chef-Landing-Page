@@ -34,7 +34,7 @@ function App() {
   // VITE_API_KEY = "d6f36fb58d0a465d8c08797c6f2f8dae20240713120014255280";
   // VITE_API_ID = "AQKRXIFY3CJKCZT";
 
-  const baseUrl = `https://timbu-get-all-products.reavdev.workers.dev/?organization_id=${apiORG}&reverse_sort=false&page=1&size=16&Appid=${Appid}&Apikey=${Apikey}`;
+  const baseUrl = `https://timbu-get-all-products.reavdev.workers.dev/?organization_id=${apiORG}&reverse_sort=false&page=1&size=31&Appid=${Appid}&Apikey=${Apikey}`;
 
   async function getData() {
     try {
