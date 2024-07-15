@@ -296,7 +296,7 @@ function Checkout({ cartItems, cartCounter, imageBaseUrl }) {
               </div>
               <div className="flex py-4 font-semibold border-t border-b border-[#555555] justify-between">
                 <p>Total</p>
-                <p>{total} </p>
+                <p>N{total}</p>
               </div>
             </div>
             {/* </div> */}
@@ -319,7 +319,9 @@ function Checkout({ cartItems, cartCounter, imageBaseUrl }) {
                     </div>
 
                     <div className="space-y-3">
-                      <p>N190</p>
+                      <p>
+                        {`N${(190 * cart.quantity || 190).toFixed(2)}` || 0}
+                      </p>
                       <div className="bg-[#E0DFFE] font-semibold rounded-full border ring ring-gray-500 h-[15px] w-[16px]"></div>
                       <p>{cart.quantity || "1"}</p>
                     </div>
