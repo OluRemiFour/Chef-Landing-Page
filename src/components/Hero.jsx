@@ -4,24 +4,8 @@ import { FaRegUser } from "react-icons/fa";
 import { MdFavoriteBorder } from "react-icons/md";
 import { Link, NavLink } from "react-router-dom";
 import Group from "../../public/Group.png";
-import { useState } from "react";
 
 function Hero({ handleSearch, query, cartCounter, products }) {
-  // const [query, setQuery] = useState("");
-  // const [searchItem, setSearchItem] = useState("");
-
-  // function handleSearch(e) {
-  //   const value = e.target.value;
-  //   setQuery(value);
-
-  //   const SearchProduct = Object(products).filter((products) =>
-  //     products.name.toLowerCase().includes(value.toLowerCase())
-  //   );
-
-  //   setSearchItem(SearchProduct);
-  // }
-  // console.log(searchItem);
-
   return (
     <>
       <div className="md:hidden">

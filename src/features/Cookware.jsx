@@ -26,7 +26,7 @@ function Cookware({ handleAddToCart, imageBaseUrl, cookware, searchItem }) {
 
         <div>
           <div className="flex items-center justify-between m-8">
-            <p>{cookware?.length} items found</p>
+            <p>{searchItem ? "" : cookware?.length} items found</p>
             <div className="border p-2">
               Sort by:
               <select

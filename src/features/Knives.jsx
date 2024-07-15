@@ -27,7 +27,9 @@ function ProductList({ knives, handleAddToCart, imageBaseUrl, searchItem }) {
 
       <div>
         <div className="flex items-center justify-between m-8">
-          <p className="">6 items found </p>
+          {/* <p className="">6 items found </p> */}
+          <p>{searchItem ? "" : knives?.length} items found</p>
+
           <div className="border p-2">
             {" "}
             Sort by:
