@@ -2,7 +2,14 @@ import { FaRegEdit } from "react-icons/fa";
 import { CiCreditCard1 } from "react-icons/ci";
 import { Link } from "react-router-dom";
 
-function Checkout() {
+function Checkout({ cartItems, cartCounter, imageBaseUrl }) {
+  const price = 190 * cartCounter;
+  const subtotal = cartItems.reduce(
+    (acc, cart) => acc + cart.quantity * 190 || price,
+    0
+  );
+  const total = subtotal;
+
   return (
     <>
       {/* Header */}
@@ -277,11 +284,11 @@ function Checkout() {
             <div className="space-y-4 p-2">
               <div className="flex font-semibold text-lg justify-between">
                 <h1>Order Summary</h1>
-                <p>2 item</p>
+                <p>{cartCounter || ""} item</p>
               </div>
               <div className="flex justify-between">
                 <p>Subtotal</p>
-                <p>N180, 000</p>
+                <p>{total} </p>
               </div>
               <div className="flex py-2 justify-between">
                 <p>Shipping</p>
@@ -289,53 +296,57 @@ function Checkout() {
               </div>
               <div className="flex py-4 font-semibold border-t border-b border-[#555555] justify-between">
                 <p>Total</p>
-                <p>N180, 000</p>
+                <p>{total} </p>
               </div>
             </div>
             {/* </div> */}
 
             <div className="space-y-4 py-6">
-              <div className="flex justify-between">
-                <div className="flex md:gap-4 gap-2">
-                  <img
-                    src="/check2.png"
-                    alt="check"
-                    className="w-[30%] md:h-fit"
-                  />
-                  <div className="space-y-2">
-                    <p className="font-semibold">Transparent Kettle</p>
-                    <p>Color selected</p>
-                    <p>Quantity</p>
+              {cartItems.map((cart, index) => (
+                <div key={index}>
+                  <div className="flex justify-between">
+                    <div className="flex md:gap-4 gap-2">
+                      <img
+                        src={`${imageBaseUrl}${cart.photos[0].url}`}
+                        alt={cart.name}
+                        className="w-[30%] md:h-fit"
+                      />
+                      <div className="space-y-2">
+                        <p className="font-semibold">{cart.name}</p>
+                        <p>Color selected</p>
+                        <p>Quantity</p>
+                      </div>
+                    </div>
+
+                    <div className="space-y-3">
+                      <p>N190</p>
+                      <div className="bg-[#E0DFFE] font-semibold rounded-full border ring ring-gray-500 h-[15px] w-[16px]"></div>
+                      <p>{cart.quantity || "1"}</p>
+                    </div>
                   </div>
-                </div>
 
-                <div className="space-y-3">
-                  <p>N100, 000</p>
-                  <div className="bg-[#E0DFFE] font-semibold rounded-full border ring ring-gray-500 h-[15px] w-[16px]"></div>
-                  <p>1</p>
-                </div>
-              </div>
+                  {/* <div className="flex justify-between">
+                    <div className="flex md:gap-4 gap-2">
+                      <img
+                        src={`${imageBaseUrl}${cart.photos[0].url}`}
+                        alt={cart.name}
+                        className="w-[30%] md:h-fit"
+                      />
+                      <div className="space-y-2">
+                        <p className="font-semibold"></p>
+                        <p>Color selected</p>
+                        <p>Quantity</p>
+                      </div>
+                    </div>
 
-              <div className="flex justify-between">
-                <div className="flex md:gap-4 gap-2">
-                  <img
-                    src="/check1.png"
-                    alt="check"
-                    className="w-[30%] md:h-fit"
-                  />
-                  <div className="space-y-2">
-                    <p className="font-semibold">Non-rust frying pan</p>
-                    <p>Color selected</p>
-                    <p>Quantity</p>
-                  </div>
+                    <div className="space-y-3">
+                      <p>N100, 000</p>
+                      <div className="bg-[#000] font-semibold rounded-full border ring ring-gray-500 h-[15px] w-[16px]"></div>
+                      <p>1</p>
+                    </div>
+                  </div> */}
                 </div>
-
-                <div className="space-y-3">
-                  <p>N100, 000</p>
-                  <div className="bg-[#000] font-semibold rounded-full border ring ring-gray-500 h-[15px] w-[16px]"></div>
-                  <p>1</p>
-                </div>
-              </div>
+              ))}
             </div>
 
             <div className="block md:hidden py-6">

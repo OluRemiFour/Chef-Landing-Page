@@ -9,7 +9,6 @@ function Carts({
   cartCounter,
   handleRemoveFromCart,
   cartItems,
-  productQuantities,
   imageBaseUrl,
   setCartItems,
 }) {
@@ -223,7 +222,7 @@ function Carts({
             </div>
 
             <div className="flex justify-between">
-              <Link to="/">
+              <Link to="/checkout">
                 <button className="border-[#0A0A0A] border-2 bg-[#0A0A0A] text-white w-[130px] h-[35px]">
                   Checkout
                 </button>

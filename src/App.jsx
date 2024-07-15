@@ -108,6 +108,13 @@ function App() {
     });
   };
 
+  const price = 190 * cartCounter;
+  const subtotal = cartItems.reduce(
+    (acc, cart) => acc + cart.quantity * 190 || price,
+    0
+  );
+  const total = subtotal;
+
   return (
     <BrowserRouter>
       <ScrollToTop />
@@ -149,7 +156,17 @@ function App() {
             />
           }
         />
-        <Route path="checkout" element={<Checkout />} />
+        <Route
+          path="checkout"
+          element={
+            <Checkout
+              cartItems={cartItems}
+              cartCounter={cartCounter}
+              imageBaseUrl={imageBaseUrl}
+              total={total}
+            />
+          }
+        />
         <Route path="contact" element={<Contact cartCounter={cartCounter} />} />
         {/* <Route path="*" element={<NotFound />} /> */}
       </Routes>
