@@ -43,7 +43,7 @@ function ProductList({ knives, handleAddToCart, imageBaseUrl }) {
       </div>
 
       <div className="md:grid md:grid-cols-3 gap-4 space-y-4 md:space-y-0">
-        {selectedItems.map((knife, index) => (
+        {selectedItems?.map((knife, index) => (
           <div
             key={index}
             className="flex flex-col space-y-[12px] border rounded-md py-8 px-4 w-fit"

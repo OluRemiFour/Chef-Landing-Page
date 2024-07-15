@@ -19,7 +19,7 @@ function Carts({
     const newQuantity = parseInt(event.target.value, 10);
 
     setCartItems((prevCartItems) =>
-      prevCartItems.map((item) =>
+      prevCartItems?.map((item) =>
         item.unique_id === cartItem.unique_id
           ? { ...item, quantity: newQuantity }
           : item
@@ -133,7 +133,7 @@ function Carts({
         {/* List of cart items */}
         <div className="md:grid lg:gap-[48px] lg:grid-cols-2 space-y-8 py-10 items-center mx-auto flex flex-col justify-between">
           <div>
-            {cartItems.map((cart, index) => (
+            {cartItems?.map((cart, index) => (
               <div
                 key={index}
                 className="justify-between md:space-y-0 lg:space-y-4 space-y-4 gap-[48px] md:flex pt-3 lg:block"

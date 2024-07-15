@@ -43,7 +43,7 @@ function Cookware({ handleAddToCart, imageBaseUrl, cookware }) {
             <div className="lg:mx-2 my-4">
               <div className="lg:m-8 m-4 space-y-4 md:space-y-0 md:flex gap-4 justify-between">
                 <div className="md:grid md:grid-cols-3 gap-4 space-y-4 md:space-y-0">
-                  {selectedItems.map((cookware, index) => (
+                  {selectedItems?.map((cookware, index) => (
                     <div
                       key={index}
                       className="flex flex-col space-y-[12px] border rounded-md py-8 px-4 w-fit"
