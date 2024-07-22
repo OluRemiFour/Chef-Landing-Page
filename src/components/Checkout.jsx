@@ -142,7 +142,7 @@ function Checkout({ cartItems, cartCounter, setCartItems }) {
 
                 <div>
                   <label htmlFor="" className="text-slate-700">
-                    Number{" "}
+                    Number
                   </label>
                   <input
                     type="text"
