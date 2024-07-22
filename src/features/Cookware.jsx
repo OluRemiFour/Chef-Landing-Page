@@ -86,7 +86,7 @@ function Cookware({ handleAddToCart, imageBaseUrl, cookware, searchItem }) {
                     </div>
 
                     <button
-                      onClick={() => handleAddToCart(knife)}
+                      onClick={() => handleAddToCart(cookware)}
                       className="flex gap-2 border p-2 rounded-md border-black items-center"
                     >
                       <p>Add to cart</p>

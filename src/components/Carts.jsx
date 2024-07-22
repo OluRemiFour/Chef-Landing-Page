@@ -127,23 +127,25 @@ function Carts({
         </div>
 
         {/* List of cart items */}
-        <div className="md:grid lg:gap-[48px] lg:grid-cols-2 space-y-8 py-10 items-center mx-auto flex flex-col justify-between">
+        {/* <div className="md:grid lg:gap-[48px] lg:grid-cols-2 space-y-8 py-10 items-center mx-auto flex flex-col justify-between"> */}
+        <div className="md:grid lg:gap-[48px] lg:grid-cols-2 space-y-8 py-10 mx-auto flex flex-col justify-between">
           <div>
             {cartItems?.map((cart, index) => (
               <div
                 key={index}
                 className="justify-between md:space-y-0 lg:space-y-4 space-y-4 gap-[48px] md:flex pt-3 lg:block"
               >
-                <div className="lg:flex p-4 gap-3 border lg:h-fit">
+                <div className="lg:flex p-4 gap-3 border lg:justify-around items-center lg:h-fit">
                   <img
                     // src={`${imageBaseUrl}${cart.photos[0].url}`}
                     src={cart.photos}
                     alt={cart.name}
-                    className="w-full lg:w-1/6 lg:h-fit"
+                    // className="w-full lg:w-1/6 lg:h-full"
+                    className="w-full lg:w-2/5 lg:h-1/5"
                   />
 
                   <div className="space-y-1 ">
-                    <div className="flex font-semibold py-2 items-center justify-between md:gap-60">
+                    <div className="flex font-semibold py-2 items-center justify-between ">
                       <h1>{cart.name}</h1>
                       <p>
                         {`N${(cart.price * cart.quantity || cart.price).toFixed(

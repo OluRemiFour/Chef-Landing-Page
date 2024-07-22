@@ -46,13 +46,13 @@ export default function getData() {
     },
     {
       id: 7,
-      name: "Pocket Knife",
+      name: "Pocket  Knife",
       price: 750,
       photos: "section1.png",
     },
     {
       id: 8,
-      name: "Militry Knife",
+      name: "Militry Pocket Knife",
       price: 250,
       photos: "section2.png",
     },
