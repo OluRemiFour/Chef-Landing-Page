@@ -72,7 +72,7 @@ function ProductList({
 
               <div className="flex justify-between font-semibold">
                 <h1>{knife.name}</h1>
-                <p>{knife.price}</p>
+                <p>N{knife.price}</p>
               </div>
               <h3 className="text-[14px] w-fit">
                 This 5-quart pot is crafted from high-quality, durable materials
